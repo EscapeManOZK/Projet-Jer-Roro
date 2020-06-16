@@ -6,8 +6,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="getProjectValue">Download data projects</string>
+    <string name="getProjectValueComplete">Download data projects success</string>
+    <string name="getProjectValueFail">Download data projects fail</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_project_page">Project Page</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="default_text_value">DEFAULT TITLE VALUE</string>
+    <string name="default_creator_value">Par CLIENT CLIENT</string>
+    <string name="default_amount_value">Pour 11515 K EURO</string>
+    <string name="par">Par </string>
+    <string name="pour">Pour </string>
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_meduim_size">
+    
+    <ImageView
+        android:id="@+id/ProjectStatusIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/item_validation_icon"/>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_meduim_size">
+        <TextView
+            android:id="@+id/ProjectTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_title_size"
+            android:text="@string/default_text_value"/>
+
+        <TextView
+            android:id="@+id/ProjectCreator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_creator_value"
+            android:layout_below="@+id/ProjectTitle"/>
+
+        <TextView
+            android:id="@+id/ProjectAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_amount_value"
+            android:layout_below="@+id/ProjectCreator"/>
+    </RelativeLayout>
+
+</LinearLayout>
