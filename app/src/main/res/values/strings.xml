@@ -18,4 +18,12 @@
     <string name="default_amount_value">Pour 11515 K EURO</string>
     <string name="par">Par </string>
     <string name="pour">Pour </string>
+    <string name="VALIDATION">Validé</string>
+    <string name="REFUSE">Refusé</string>
+    <string name="EN_ATTENTE">En Attente</string>
+    <string name="EN_COURS">En Cours</string>
+    <string name="FINI">Terminé</string>
+
+
+
 </resources>

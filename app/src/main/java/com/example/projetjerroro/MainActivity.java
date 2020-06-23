@@ -1,10 +1,12 @@
 package com.example.projetjerroro;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 
+import com.example.projetjerroro.ui.home.HomeFragment;
 import com.example.projetjerroro.ui.utils.Global;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
