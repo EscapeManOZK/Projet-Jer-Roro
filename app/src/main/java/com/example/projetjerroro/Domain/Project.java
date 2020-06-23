@@ -194,7 +194,7 @@ public class Project implements Serializable, Comparable< Project > {
                 "&&StatusValidation=" + StatusValidation +
                 "&&Status=" + Status +
                 "&&InChargeUserID=" + InChargeUser.getID();
-        if (getID()>0) {
+        if (getID() != null) {
             params += "&&ID="+ getID();
         }
         return  params;
