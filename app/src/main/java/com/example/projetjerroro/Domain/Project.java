@@ -3,10 +3,14 @@ package com.example.projetjerroro.Domain;
 import com.example.projetjerroro.Domain.Enum.ProjectStatusType;
 import com.example.projetjerroro.Domain.Enum.StatusValidationType;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 import java.time.Instant;
 
-public class Project {
-    private int ID;
+public class Project implements Serializable, Comparable< Project > {
+    private Integer ID;
     private String Title;
     private String Description;
     private int Amount;
@@ -39,7 +43,7 @@ public class Project {
         this.InChargeUser = InChargeUser;
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
@@ -133,5 +137,82 @@ public class Project {
 
     public void setInChargeUser(User inChargeUser) {
         InChargeUser = inChargeUser;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ID=" + ID +
+                ", Title='" + Title + '\'' +
+                ", Description='" + Description + '\'' +
+                ", Amount=" + Amount +
+                ", StatusValidation=" + StatusValidation +
+                ", CommentValidation='" + CommentValidation + '\'' +
+                ", Validator=" + Validator +
+                ", ValidationDate=" + ValidationDate +
+                ", Status=" + Status +
+                ", StartDate=" + StartDate +
+                ", EndDate=" + EndDate +
+                ", InChargeUser=" + InChargeUser +
+                '}';
+    }
+
+    public String toJSON(){
+
+        JSONObject jsonObject= new JSONObject();
+        try {
+            jsonObject.put("ID", getID());
+            jsonObject.put("Title", getTitle());
+            jsonObject.put("Description", getDescription());
+            jsonObject.put("Amount", getAmount());
+            jsonObject.put("StatusValidation", getStatusValidation());
+            jsonObject.put("CommentValidation", getCommentValidation());
+            if (getValidator()!= null) {
+                jsonObject.put("Validator", getValidator().toJSON());
+            } else {
+                jsonObject.put("Validator", null);
+            }
+            jsonObject.put("ValidationDate", getValidationDate());
+            jsonObject.put("Status", getStatus());
+            jsonObject.put("StartDate", getStartDate());
+            jsonObject.put("EndDate", getEndDate());
+            jsonObject.put("InChargeUser", getInChargeUser().toJSON());
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return "";
+        }
+
+    }
+
+    public String toParams() {
+        String params = "Title=" + Title  +
+                "&&Description=" + Description+
+                "&&Amount=" + Amount +
+                "&&StatusValidation=" + StatusValidation +
+                "&&Status=" + Status +
+                "&&InChargeUserID=" + InChargeUser.getID();
+        if (getID()>0) {
+            params += "&&ID="+ getID();
+        }
+        return  params;
+    }
+
+    public String toParamsToValid() {
+        return  "ID=" + ID +
+                "&&StatusValidation=" + StatusValidation +
+                "&&CommentValidation=" + CommentValidation +
+                "&&ValidatorID=" + Validator.getID() +
+                "&&ValidationDate=" + ValidationDate;
+    }
+
+    @Override
+    public int compareTo(Project o) {
+        if (getStatus().equals(o.getStatus())) {
+            return getID().compareTo(o.getID());
+        }
+        return getStatus().compareTo(o.getStatus());
     }
 }

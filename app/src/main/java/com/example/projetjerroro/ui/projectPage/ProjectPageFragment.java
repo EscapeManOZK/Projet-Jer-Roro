@@ -1,12 +1,13 @@
 package com.example.projetjerroro.ui.projectPage;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +18,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.projetjerroro.Domain.Project;
 import com.example.projetjerroro.Domain.User;
+import com.example.projetjerroro.MainActivity;
 import com.example.projetjerroro.R;
-import com.example.projetjerroro.Service.ProjectService;
-import com.example.projetjerroro.ui.home.HomeViewModel;
+import com.example.projetjerroro.ui.login.LoginActivity;
 import com.example.projetjerroro.ui.utils.Global;
 
 import java.util.ArrayList;
@@ -49,8 +50,23 @@ public class ProjectPageFragment extends Fragment {
         this.projectPageViewModel.getProjects().observe(getViewLifecycleOwner(), new Observer<List<Project>>() {
             @Override
             public void onChanged(@Nullable List<Project> s) {
-                projects = s;
+                if (s == null) {
+                    projects = new ArrayList<>();
+                } else {
+                    projects = s;
+                }
                 listView.setAdapter(new ProjectItemAdapter(getContext(), projects));
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected item text from ListView
+                Project selectedItem = (Project) parent.getItemAtPosition(position);
+                Intent myIntent = new Intent(getActivity(), DetailProject.class);
+                myIntent.putExtra("Project", selectedItem); //Optional parameters
+                getActivity().startActivityForResult(myIntent, 0);
             }
         });
 

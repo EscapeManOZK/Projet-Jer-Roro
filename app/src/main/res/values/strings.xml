@@ -9,13 +9,56 @@
     <string name="getProjectValue">Download data projects</string>
     <string name="getProjectValueComplete">Download data projects success</string>
     <string name="getProjectValueFail">Download data projects fail</string>
+    <string name="createfail">Project creation fail</string>
+    <string name="projectcreate">Projet créée</string>
+    <string name="fieldRequired">Champ obligatoire</string>
+
 
     <string name="menu_home">Home</string>
     <string name="menu_project_page">Project Page</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_add_project">Add Project</string>
     <string name="default_text_value">DEFAULT TITLE VALUE</string>
     <string name="default_creator_value">Par CLIENT CLIENT</string>
     <string name="default_amount_value">Pour 11515 K EURO</string>
     <string name="par">Par </string>
     <string name="pour">Pour </string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_out_short">Sign out</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_detail_project">DetailProject</string>
+    <string name="tab_text_1">Detail</string>
+    <string name="tab_text_2">Edit</string>
+    <string name="tab_text_3">Validation</string>
+    <string name="detail">Detail de </string>
+    <string name="titre">Titre</string>
+    <string name="description">Description</string>
+    <string name="montant">Montant</string>
+    <string name="status">Status</string>
+    <string name="startdate">StartDate</string>
+    <string name="enddate">EndDate</string>
+    <string name="user_in_charge">User in charge</string>
+    <string name="validation">Validation</string>
+    <string name="validateur">Validateur</string>
+    <string name="commentaire">Commentaire</string>
+    <string name="date">Date</string>
+
+    <string name="VALIDATION">En cours de validation</string>
+    <string name="REFUSE">Refusé</string>
+    <string name="EN_ATTENTE">En attente de lancement</string>
+    <string name="EN_COURS">En cours</string>
+    <string name="FINI">Fini</string>
+    <string name="WAIT">En attente</string>
+    <string name="VALID">Validé</string>
+    <string name="supprimer">Supprimer le projet</string>
+    <string name="projectDelete">Le projet a bien été supprimer :</string>
+    <string name="menu_update_project">Update project</string>
+    <string name="projectUpdate">Projet update</string>
+    <string name="Validate">Validation du projet</string>
 </resources>

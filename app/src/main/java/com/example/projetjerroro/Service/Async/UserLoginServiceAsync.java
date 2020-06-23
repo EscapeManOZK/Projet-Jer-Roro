@@ -12,10 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 import com.example.projetjerroro.Domain.Project;
+import com.example.projetjerroro.Domain.User;
 import com.example.projetjerroro.R;
+import com.example.projetjerroro.Service.Result;
 import com.example.projetjerroro.Service.UtilsService;
 import com.example.projetjerroro.ui.projectPage.ProjectItemAdapter;
-import com.example.projetjerroro.ui.utils.Global;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,41 +34,26 @@ import javax.net.ssl.HttpsURLConnection;
 // doc : https://developer.android.com/reference/android/os/AsyncTask.html
 // https://stackoverflow.com/questions/6343166/how-to-fix-android-os-networkonmainthreadexception
 
-public class ProjectServiceAsync extends AsyncTask<String, Void, List<Project>> {
+public class UserLoginServiceAsync extends AsyncTask<String, Void, Result<User>> {
 
     private Exception exception;
-    private Context ctx;
     private String TAG = "ProjectServiceAsync.java";
     private String url;
-    private ProgressDialog p;
-    private ListView listView;
-    private LayoutInflater inflater;
-    private View view;
 
 
-    public ProjectServiceAsync(String fileurl, Context ctx) {
+    public UserLoginServiceAsync(String fileurl) {
         this.url = fileurl;
-        this.ctx = ctx;
-        this.p = new ProgressDialog(ctx);
-        this.inflater = LayoutInflater.from(ctx);
-        this.view = inflater.inflate(R.layout.fragment_project_page, null);
-        this.listView = this.view.findViewById(R.id.TabProjects);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        p.setMessage(ctx.getResources().getString(R.string.getProjectValue));
-        p.setIndeterminate(false);
-        p.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        p.setCancelable(false);
-        p.show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    protected List<Project> doInBackground(String... strings) {
-        List<Project> projects = new ArrayList<>();
+    protected Result<User> doInBackground(String... strings) {
+        User user = new User();
         HttpsURLConnection connection = null;
         try {
             URL url = new URL(this.url);
@@ -93,18 +79,12 @@ public class ProjectServiceAsync extends AsyncTask<String, Void, List<Project>> 
                 String line;
                 BufferedReader r = new BufferedReader(new InputStreamReader(stream));
                 while ((line = r.readLine()) != null) {
-                    JSONArray jsonArray = new JSONArray(line);
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject obj = jsonArray.getJSONObject(i);
-                        System.out.println(obj);
-                        projects.add(UtilsService.getProjectFromJson(obj));
-                    }
+                    JSONObject jsonObject = new JSONObject(line);
+                    user = UtilsService.getUserFromJson(jsonObject);
                 }
-            }
+            }return new Result.Success<>(user);
         } catch (Exception e) {
-            this.exception = e;
-
-            return null;
+            return new Result.Error(new IOException("Error logging in", e));
         } finally {
             // Close Stream and disconnect HTTPS connection.
 
@@ -112,7 +92,6 @@ public class ProjectServiceAsync extends AsyncTask<String, Void, List<Project>> 
                 connection.disconnect();
             }
         }
-        return projects;
     }
 
     @Override
@@ -121,20 +100,9 @@ public class ProjectServiceAsync extends AsyncTask<String, Void, List<Project>> 
     }
 
     @Override
-    protected void onPostExecute(List<Project> projects) {
+    protected void onPostExecute( Result<User> user) {
 
-        p.dismiss();
-        if (projects != null) {
-            // Do something awesome here
-            System.out.println(projects.toString());
-            Toast.makeText(ctx, ctx.getResources().getString(R.string.getProjectValueComplete), Toast.LENGTH_SHORT).show();
-        } else {
-            projects = new ArrayList<>();
-            Toast.makeText(ctx, ctx.getResources().getString(R.string.getProjectValueFail), Toast.LENGTH_SHORT).show();
-        }
-        super.onPostExecute(projects);
+        super.onPostExecute(user);
 
-        this.listView.setAdapter(new ProjectItemAdapter(this.ctx, projects));
-        ((ProjectItemAdapter) this.listView.getAdapter()).notifyDataSetChanged();
     }
 }
