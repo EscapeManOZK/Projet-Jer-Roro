@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_project_page" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.projetjerroro.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_add_project"
+        android:name="com.example.projetjerroro.ui.addProject.AddProjectFragment"
+        android:label="@string/menu_add_project"
+        tools:layout="@layout/fragment_add_project" />
 </navigation>

@@ -1,9 +1,14 @@
 package com.example.projetjerroro.Domain;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+@SuppressWarnings("serial")
+public class User implements Serializable {
     private int ID;
     private String Login;
     private String Password;
@@ -26,6 +31,11 @@ public class User {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Roles = Roles;
+    }
+
+    public User(String id, String Login) {
+        this.ID = Integer.valueOf(id);
+        this.Login = Login;
     }
 
     public int getID() {
@@ -90,5 +100,43 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         ImageUrl = imageUrl;
+    }
+
+    public String getDisplayName() {
+        return this.FirstName + " " + this.LastName.toUpperCase();
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ID=" + ID +
+                ", Login='" + Login + '\'' +
+                ", Password='" + Password + '\'' +
+                ", Email='" + Email + '\'' +
+                ", ImageUrl='" + ImageUrl + '\'' +
+                ", FirstName='" + FirstName + '\'' +
+                ", LastName='" + LastName + '\'' +
+                ", Roles=" + Roles +
+                '}';
+    }
+
+    public String toJSON() {
+        JSONObject jsonObject= new JSONObject();
+        try {
+            jsonObject.put("ID", getID());
+            jsonObject.put("Login", getLogin());
+            jsonObject.put("Password", getPassword());
+            jsonObject.put("Email", getEmail());
+            jsonObject.put("ImageUrl", getImageUrl());
+            jsonObject.put("FirstName", getFirstName());
+            jsonObject.put("LastName", getLastName());
+            jsonObject.put("Roles", getRoles());
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
     }
 }
