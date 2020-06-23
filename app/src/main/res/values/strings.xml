@@ -66,7 +66,7 @@
     <string name="EN_ATTENTE_HOME">En Attente</string>
     <string name="EN_COURS_HOME">En Cours</string>
     <string name="FINI_HOME">Terminé</string>
-
+    <string name="projectData">Project Data</string>
 
 
 </resources>
