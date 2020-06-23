@@ -74,7 +74,7 @@ public class UtilsService {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private static Instant getDateFromString(String obj) {
+    public static Instant getDateFromString(String obj) {
         String timestamp = obj;
         if (timestamp != "null" && timestamp != null) {
             LocalDate date = LocalDate.parse(timestamp);
@@ -83,7 +83,7 @@ public class UtilsService {
         return null;
     }
 
-    private static User getUserFromJson(JSONObject obj) throws JSONException {
+    public static User getUserFromJson(JSONObject obj) throws JSONException {
         if (obj != null) {
             User user = new User();
             user.setID(obj.getInt("ID"));
@@ -103,10 +103,15 @@ public class UtilsService {
         return null;
     }
 
-    private static Role getRoleFromJson(JSONObject obj) throws JSONException {
+    public static Role getRoleFromJson(JSONObject obj) throws JSONException {
         if (obj != null) {
             return new Role(obj.getInt("ID"), obj.getString("Name"));
         }
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public static boolean containsName(final List<Role> list, final String name){
+        return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
     }
 }

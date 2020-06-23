@@ -1,6 +1,8 @@
 package com.example.projetjerroro.Domain;
 
-public class Role {
+import java.io.Serializable;
+
+public class Role implements Serializable {
     private int ID;
     private String Name;
 
@@ -25,5 +27,13 @@ public class Role {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "ID=" + ID +
+                ", Name='" + Name + '\'' +
+                '}';
     }
 }
