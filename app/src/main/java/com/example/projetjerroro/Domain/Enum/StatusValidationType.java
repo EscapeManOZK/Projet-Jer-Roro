@@ -1,7 +1,0 @@
-package com.example.projetjerroro.Domain.Enum;
-
-public enum StatusValidationType {
-    WAIT,
-    VALID,
-    REFUSE
-}

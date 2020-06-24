@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.projetjerroro.ui.home.HomeFragment"
+        android:name="fr.esnl.projetjerroro.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_project_page"
-        android:name="com.example.projetjerroro.ui.projectPage.ProjectPageFragment"
+        android:name="fr.esnl.projetjerroro.ui.projectPage.ProjectPageFragment"
         android:label="@string/menu_project_page"
         tools:layout="@layout/fragment_project_page" />
 
     <fragment
         android:id="@+id/nav_add_project"
-        android:name="com.example.projetjerroro.ui.addProject.AddProjectFragment"
+        android:name="fr.esnl.projetjerroro.ui.addProject.AddProjectFragment"
         android:label="@string/menu_add_project"
         tools:layout="@layout/fragment_add_project" />
 </navigation>
