@@ -67,6 +67,7 @@
     <string name="EN_COURS_HOME">En Cours</string>
     <string name="FINI_HOME">Terminé</string>
     <string name="projectData">Project Data</string>
+    <string name="countFail">Erreur lors de la récupération des données</string>
 
 
 </resources>

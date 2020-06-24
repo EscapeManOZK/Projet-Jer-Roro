@@ -5,6 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.projetjerroro.Domain.Enum.ProjectStatusType;
+import com.example.projetjerroro.Domain.Project;
+import com.example.projetjerroro.R;
+import com.example.projetjerroro.Service.ProjectService;
+import com.example.projetjerroro.Service.Result;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,32 +17,30 @@ import java.util.Map;
 public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-    private MutableLiveData<Map<ProjectStatusType, Integer>> mutableLiveData;
+    private MutableLiveData<HomeResult> homeResult;
+
 
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mutableLiveData = new MutableLiveData<>();
         mText.setValue("Bienvenu sur L' A.G.P");
-        mutableLiveData.setValue(new HashMap<>());
+        homeResult = new MutableLiveData<>();
     }
 
     public LiveData<String> getText() {
         return mText;
     }
 
-    public LiveData<Map<ProjectStatusType, Integer>> getMutableLiveData() {
-        return mutableLiveData;
-    }
+
+    public LiveData<HomeResult> getHomeResult() { return homeResult; }
 
     public void getData() {
-        Map<ProjectStatusType, Integer> projectStatusTypeIntegerMap = new HashMap<>();
+        Result<Map<ProjectStatusType, Integer>> result = ProjectService.count();
 
-        projectStatusTypeIntegerMap.put(ProjectStatusType.VALIDATION, 10);
-        projectStatusTypeIntegerMap.put(ProjectStatusType.REFUSE, 2);
-        projectStatusTypeIntegerMap.put(ProjectStatusType.EN_ATTENTE, 6);
-        projectStatusTypeIntegerMap.put(ProjectStatusType.EN_COURS, 2);
-        projectStatusTypeIntegerMap.put(ProjectStatusType.FINI, 100);
-
-        this.mutableLiveData.setValue(projectStatusTypeIntegerMap);
+        if (result instanceof Result.Success) {
+            Map<ProjectStatusType, Integer> data = ((Result.Success<Map<ProjectStatusType, Integer>>) result).getData();
+            homeResult.setValue(new HomeResult(new HomeView(data)));
+        } else {
+            homeResult.setValue(new HomeResult(R.string.countFail));
+        }
     }
 }

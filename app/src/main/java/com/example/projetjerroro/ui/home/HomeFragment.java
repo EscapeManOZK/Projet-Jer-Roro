@@ -6,10 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -47,22 +49,32 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeViewModel.getMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Map<ProjectStatusType, Integer>>() {
+        homeViewModel.getHomeResult().observe(getViewLifecycleOwner(), new Observer<HomeResult>() {
             @Override
-            public void onChanged(@Nullable Map<ProjectStatusType, Integer> s) {
-                mPieChart.setVisibility(View.VISIBLE);
-                mPieChart.animateXY(2000,2000);
-                List<PieEntry>pieEntries = new ArrayList<>();
-                for (ProjectStatusType type : ProjectStatusType.values()) {
-                    if (s.containsKey(type)) {
-                        pieEntries.add(new PieEntry(s.get(type), getStatus(type)));
-                    }
+            public void onChanged(@Nullable HomeResult s) {
+                if (s == null) {
+                    return;
                 }
-                PieDataSet pieDataSet=new PieDataSet(pieEntries,getResources().getString(R.string.projectData));
-                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                mPieChart.setData(new PieData(pieDataSet));
+                if (s.getError() != null) {
+                    showLoginFailed(s.getError());
+                }
+                if (s.getSuccess() != null) {
+                    updateUiWithUser(s.getSuccess());
+                    mPieChart.setVisibility(View.VISIBLE);
+                    mPieChart.animateXY(2000,2000);
+                    List<PieEntry>pieEntries = new ArrayList<>();
+                    for (ProjectStatusType type : ProjectStatusType.values()) {
+                        if (s.getSuccess().getProject().containsKey(type)) {
+                            pieEntries.add(new PieEntry(s.getSuccess().getProject().get(type), getStatus(type)));
+                        }
+                    }
+                    PieDataSet pieDataSet=new PieDataSet(pieEntries,getResources().getString(R.string.projectData));
+                    pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                    mPieChart.setData(new PieData(pieDataSet));
+                }
             }
         });
+
         return root;
     }
 
@@ -93,6 +105,16 @@ public class HomeFragment extends Fragment {
         super.onResume();
         homeViewModel.getData();
 
+    }
+
+    private void updateUiWithUser(HomeView model) {
+        String welcome = getString(R.string.getProjectValueComplete);
+        // TODO : initiate successful logged in experience
+        Toast.makeText(getContext(), welcome, Toast.LENGTH_LONG).show();
+    }
+
+    private void showLoginFailed(@StringRes Integer errorString) {
+        Toast.makeText(getContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
 

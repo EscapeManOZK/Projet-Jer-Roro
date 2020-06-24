@@ -5,9 +5,11 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.projetjerroro.Domain.Enum.ProjectStatusType;
 import com.example.projetjerroro.Domain.Project;
 import com.example.projetjerroro.Domain.Role;
 import com.example.projetjerroro.Domain.User;
+import com.example.projetjerroro.Service.Async.ProjectCountServiceAsync;
 import com.example.projetjerroro.Service.Async.ProjectCreateServiceAsync;
 import com.example.projetjerroro.Service.Async.ProjectDeleteServiceAsync;
 import com.example.projetjerroro.Service.Async.ProjectGetOneServiceAsync;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public class ProjectService {
@@ -90,6 +93,16 @@ public class ProjectService {
             return new Result.Error(new IOException("Error in get project", e));
         } catch (InterruptedException e) {
             return new Result.Error(new IOException("Error in get project", e));
+        }
+    }
+
+    public static Result<Map<ProjectStatusType, Integer>> count() {
+        try {
+            return new ProjectCountServiceAsync(PROJECT_URL_RESSOURCE + "count.php").execute().get();
+        } catch (ExecutionException e) {
+            return new Result.Error(new IOException("Error in count project", e));
+        } catch (InterruptedException e) {
+            return new Result.Error(new IOException("Error in count project", e));
         }
     }
 }
