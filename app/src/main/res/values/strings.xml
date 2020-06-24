@@ -61,4 +61,13 @@
     <string name="menu_update_project">Update project</string>
     <string name="projectUpdate">Projet update</string>
     <string name="Validate">Validation du projet</string>
+    <string name="VALIDATION_HOME">Validé</string>
+    <string name="REFUSE_HOME">Refusé</string>
+    <string name="EN_ATTENTE_HOME">En Attente</string>
+    <string name="EN_COURS_HOME">En Cours</string>
+    <string name="FINI_HOME">Terminé</string>
+    <string name="projectData">Project Data</string>
+    <string name="countFail">Erreur lors de la récupération des données</string>
+
+
 </resources>

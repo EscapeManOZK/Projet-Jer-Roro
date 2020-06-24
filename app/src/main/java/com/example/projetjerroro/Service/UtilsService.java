@@ -21,14 +21,11 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
 public class UtilsService {
 
@@ -113,5 +110,11 @@ public class UtilsService {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public static boolean containsName(final List<Role> list, final String name){
         return list.stream().filter(o -> o.getName().equals(name)).findFirst().isPresent();
+    }
+
+    public static Map<ProjectStatusType, Integer> getCountFromJson(JSONObject obj) throws JSONException {
+        Map<ProjectStatusType, Integer> map = new HashMap<>();
+        map.put(ProjectStatusType.valueOf(obj.getString("Key")), obj.getInt("Value"));
+        return map;
     }
 }

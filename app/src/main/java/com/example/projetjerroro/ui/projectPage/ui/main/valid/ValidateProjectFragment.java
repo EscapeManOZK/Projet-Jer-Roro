@@ -85,6 +85,7 @@ public class ValidateProjectFragment extends Fragment {
             index = getArguments().getInt(ARG_SECTION_NUMBER);
             try {
                 project = UtilsService.getProjectFromJson(new JSONObject(getArguments().getString(ARG_SECTION_PROJECT)));
+                pageViewModel.setmProject(project);
             } catch (JSONException e) {
                 int id = getArguments().getInt(ARG_SECTION_PROJECT_ID);
                 Result<Project> result = ProjectService.getOne(id);

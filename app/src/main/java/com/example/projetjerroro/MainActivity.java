@@ -2,6 +2,8 @@ package com.example.projetjerroro;
 
 import android.content.Intent;
 import android.os.Build;
+import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import com.example.projetjerroro.Domain.User;
 import com.example.projetjerroro.Service.Async.DownloadImageTask;
 import com.example.projetjerroro.Service.UtilsService;
 import com.example.projetjerroro.ui.login.LoginActivity;
+import com.example.projetjerroro.ui.home.HomeFragment;
 import com.example.projetjerroro.ui.utils.Global;
 import com.google.android.material.navigation.NavigationView;
 
@@ -35,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((Global) this.getApplication()).setCurrentUser(null);
-        this.current_user = null;
+        openLogin(null);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        openLogin(null);
+
     }
 
     @Override
