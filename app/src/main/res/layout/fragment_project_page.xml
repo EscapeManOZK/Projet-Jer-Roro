@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.projectPage.ProjectPageFragment">
+    tools:context="fr.esnl.projetjerroro.ui.projectPage.ProjectPageFragment">
 
 
     <ListView
