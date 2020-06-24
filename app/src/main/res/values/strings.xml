@@ -1,13 +1,71 @@
 <resources>
-    <string name="app_name">Projet Jer Roro</string>
+    <string name="app_name">A.G.P.</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="getProjectValue">Download data projects</string>
+    <string name="getProjectValueComplete">Download successful data projects</string>
+    <string name="getProjectValueFail">Download data projects fail</string>
+    <string name="createfail">Project creation fail</string>
+    <string name="projectcreate">Project created</string>
+    <string name="fieldRequired">Required Field</string>
+
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_project_page">Project Page</string>
+    <string name="menu_add_project">Add Project</string>
+    <string name="default_text_value">DEFAULT TITLE VALUE</string>
+    <string name="default_creator_value">By CUSTOMER CUSTOMER</string>
+    <string name="default_amount_value">For 11515 K EURO</string>
+    <string name="par">By</string>
+    <string name="pour">"For "</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_out_short">Sign out</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_detail_project">Project Detail</string>
+    <string name="tab_text_1">Detail</string>
+    <string name="tab_text_2">Edit</string>
+    <string name="tab_text_3">Validation</string>
+    <string name="detail">Detail of</string>
+    <string name="titre">Title</string>
+    <string name="description">Description</string>
+    <string name="montant">Amount</string>
+    <string name="status">Status</string>
+    <string name="startdate">Start Date</string>
+    <string name="enddate">End Date</string>
+    <string name="user_in_charge">User in charge</string>
+    <string name="validation">Validation</string>
+    <string name="validateur">Validator</string>
+    <string name="commentaire">Comment</string>
+    <string name="date">Date</string>
+
+    <string name="VALIDATION">In the process of validation</string>
+    <string name="REFUSE">Refuse</string>
+    <string name="EN_ATTENTE">Awaiting launch</string>
+    <string name="EN_COURS">In progress</string>
+    <string name="FINI">Finished</string>
+    <string name="WAIT">Waiting</string>
+    <string name="VALID">Valid</string>
+    <string name="supprimer">Delete project</string>
+    <string name="projectDelete">The project has been deleted :</string>
+    <string name="menu_update_project">Update project</string>
+    <string name="projectUpdate">Project update</string>
+    <string name="Validate">Project validation</string>
+    <string name="projectData">Project Data</string>
+    <string name="countFail">Error while retrieving data</string>
+    <string name="il">There is(are)</string>
+    <string name="projet">project(s) with status</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcomeOnAGP">Welcome to A.G.P.</string>
+
+
 </resources>
