@@ -1,0 +1,5 @@
+Default login to test the application :
+
+id: client mdp: client
+id: validateur mdp: validateur
+id: ClientProf mdp: ClientPro
