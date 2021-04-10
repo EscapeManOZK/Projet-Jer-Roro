@@ -16,7 +16,7 @@
         {
             "type": "xml",
             "label": "Login page",
-            "path": "sapp/src/main/res/layout/activity_login.xml"
+            "path": "app/src/main/res/layout/activity_login.xml"
         }
     ]
 }
