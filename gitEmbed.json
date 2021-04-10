@@ -17,6 +17,11 @@
             "type": "xml",
             "label": "Login page",
             "path": "app/src/main/res/layout/activity_login.xml"
+        },
+        {
+            "type": "txt",
+            "label": "Login",
+            "path": "login.txt"
         }
     ]
 }
