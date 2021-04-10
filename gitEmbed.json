@@ -1,0 +1,22 @@
+{
+    "owner": "EscapeManOZK",
+    "repo": "meteo-angular-ngrx",
+    "ref": "master",
+    "embed": [
+        {
+            "type": "java",
+            "label": "Main Java Module",
+            "path": "app/src/main/java/fr/esnl/projetjerroro/MainActivity.java"
+        },
+        {
+            "type": "java",
+            "label": "Projects service",
+            "path": "app/src/main/java/fr/esnl/projetjerroro/Service/ProjectService.java"
+        },
+        {
+            "type": "xml",
+            "label": "Login page",
+            "path": "sapp/src/main/res/layout/activity_login.xml"
+        }
+    ]
+}
